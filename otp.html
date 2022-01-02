@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grid.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="reset.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/jquery-ui-1.8.16.custom.css" type="text/css" media="screen">
+    <link rel="stylesheet" type="text/css" href="css/jquerytour.css" />
+    <script src="jquery.hoverIntent.js" type="text/javascript"></script>
+    <title>PTMS</title>
+</head>
+<body>
+    <style>
+        /* Popup box BEGIN */
+        .hover_bkgr_fricc{
+            background:rgba(0,0,0,.4); 
+            display:none;
+            height:100%;
+            position:fixed;
+            text-align:center;
+            top:0;
+            width:100%;
+            z-index:10000;
+        }
+        .hover_bkgr_fricc .helper{
+            display:inline-block;
+            height:100%;
+            vertical-align:middle;
+        }
+        .hover_bkgr_fricc > div {
+            background-color: #fff;
+            box-shadow: 10px 10px 60px #555;
+            display: inline-block;
+            height: auto;
+            max-width: 551px;
+            min-height: 100px;
+            vertical-align: middle;
+            width: 60%;
+            position: relative;
+            border-radius: 8px;
+            padding: 15px 5%;
+        }
+        .popupCloseButton {
+            background-color: #fff;
+            border: 3px solid #999;
+            border-radius: 50px;
+            cursor: pointer;
+            display: inline-block;
+            font-family: arial;
+            font-weight: bold;
+            position: absolute;
+            top: -20px;
+            right: -20px;
+            font-size: 25px;
+            line-height: 30px;
+            width: 30px;
+            height: 30px;
+            text-align: center;
+        }
+        .popupCloseButton:hover {
+            background-color: #ccc;
+        }
+        .trigger_popup_fricc {
+            cursor: pointer;
+            font-size: 20px;
+            margin: 20px;
+            display: inline-block;
+            font-weight: bold;
+        }
+        /* Popup box BEGIN */
+        </style>
+        <style>
+            .scroll-left {
+             height: 50px;
+             overflow: hidden;
+             position: relative;
+             background: white;
+            
+            }
+            .scroll-left p {
+             position: absolute;
+             width: 100%;
+             height: 100%;
+             margin: 0;
+             font-weight: bold;
+             font-size: 30px;
+            
+             line-height: 50px;
+             text-align: center;
+             /* Starting position */
+             transform:translateX(100%);
+             /* Apply animation to this element */
+             animation: scroll-left 15s linear infinite;
+            }
+            /* Move it (define the animation) */
+            @keyframes scroll-left {
+             0%   {
+             transform: translateX(100%);
+             }
+             100% {
+             transform: translateX(-100%);
+             }
+            }
+            #page1 #content, #content {padding: 0px;padding-bottom: 5px;}
+            </style>
+    <style>
+        .btn {
+          background: #ec2718;
+        
+          -webkit-border-radius: 10;
+          -moz-border-radius: 10;
+          border-radius: 10px;
+          font-family: Arial;
+          color: #ffffff;
+          font-size: 18px;
+          padding: 6px;
+          text-decoration: none;
+        }
+        
+        .btn:hover {
+          background: #3cb0fd;
+          background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+          background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+          text-decoration: none;
+        }
+        </style>
+    <hr>
+
+    <article class="grid_12">
+        <div class="headal">
+        <h1 class="heading">PROPERTY TAX MANAGEMENT SYSTEM</h1>
+        </div>
+        <div class="bg-1 border_r-1 border-2">
+            <div class="indent">
+                <h5 class="indent-left margin-bot" style="width: 100%;">
+                <div style="float:left;">Search : Get Details : Make Payment :
+
+                <!-- <a class="btn" href="ots_application.pdf" target="_blank" style="margin-left: 20px;cursor:pointer;">Download OTS information <img src="includes/NEW_animated.gif" width="60" style="margin-top: -12px;"></a> -->
+                <!-- </div><div style="float:right;"><a class="btn" onclick="$('#tab6').hide();$('#tab2').show();" style="margin-right: 20px;cursor:pointer;">Apply for OTS <img src="includes/NEW_animated.gif" width="60" style="margin-top: -12px;"></a> </div> -->
+                </h5>
+
+                <div class="wrap bg-2 border-2 border_r">
+                    <div class="indent1">
+                        <ul class="tabs">
+                            <li class="active"><a href="otp.html" class="m1"><span>Search Property</span></a></li>
+                            <li><a href="property2.html" class="m2"><span>By Property No.</span></a></li>
+                            <li><a href="receipt2.html" class="m3"><span>By Receipt No.</span></a></li>
+                            <li><a href="name2.html" class="m4"><span>By Name.</span></a></li>
+                            <li><a href="property2.html" class="m5"><span>Know Your Tax</span></a></li>
+                            <li><a href="otp.html" class="m6"><span>Payment History</span></a></li>
+                            <li class="last"><a href="index.html" class="m7"><span>Log Out</span></a></li>
+                        </ul>
+                        
+                        <div class="tab_container fleft">
+                            <div id="tab6" class="tab_content" style="display: block;">
+                                <h3 class="margin-bot1">Find Your Details</h3>
+                                <form id="form-1" action="detailsByPropnonew.php" method="post" enctype="multipart/form-data">
+                                    <fieldset class="margin-bot3">
+                                        <!--<strong class="d-in-block color-1 margin-bot2">City:</strong>
+                                        <label class="d-block margin-bot2">
+                                            <span class="input-1"><input type="text"></span>
+                                        </label>-->
+                                        <div class="wrap">
+                                            <!--<div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Check-in:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="text" id="datepicker" value="mm/dd/yyyy"></span>
+                                                </label>
+                                            </div>-->
+                                            <!--<div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Check-out:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="text" id="datepicker1" value="mm/dd/yyyy"></span>
+                                                </label>
+                                            </div>-->
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Select Zone:</strong>
+<select name="ward" id="ward" style="width:200px; font-family: Verdana; font-size: 10pt; padding:4px;" onchange="changeBlockH('block',this.value)">
+<option value="0">Zone</option>
+
+</select> <span id="wardLoader"></span>
+                                            </div>
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Select Corporate Ward:</strong>
+                                                <font id="block">
+                        <select name="block" id="block" style="width:200px; font-family: Verdana; font-size: 10pt; padding:4px;">
+                        <option value="">Corporate Ward</option>
+                          </select></font>
+                        <span id="blockLoader"></span>	
+                                            </div>
+                                                                                                                
+                                            <div class="clear"></div>
+                                        </div>
+                                        <div class="wrap">
+                                            <!--<div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Check-in:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="text" id="datepicker" value="mm/dd/yyyy"></span>
+                                                </label>
+                                            </div>-->
+                                            <!--<div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Check-out:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="text" id="datepicker1" value="mm/dd/yyyy"></span>
+                                                </label>
+                                            </div>-->
+                                            <div style="height:10px;"></div>
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Select Area</strong>
+                                                <font id="mohalla">
+<select name="mohalla" id="mohalla" style="width:200px; font-family: Verdana; font-size: 10pt; padding:4px;">
+<option value="0">Area</option>
+</select></font><span id="mohallaLoader"></span>
+                                            </div>
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Select House No.:</strong>
+                                                <font id="house_no">
+                        <select name="house_no" id="house_no" style="width:200px; font-family: Verdana; font-size: 10pt; padding:4px;">
+                        <option value="0">House No</option>
+                          </select></font>
+                        <span id="houseLoader"></span>	
+                                            </div>
+                                                                                                                
+                                            <div class="clear"></div>
+                                        </div>
+                                    </fieldset>
+                                    <!--<input type="submit" class="button-5" value="Submit" style="cursor:pointer; margin-top:-10px;">
+                                    <a href="#" class="button-5" onClick="document.getElementById('form-1').submit()">Submit</a>-->
+                                </form>
+
+
+                            </div>
+                            <div id="tab5" class="tab_content" style="display: none;">
+                                <h3 class="margin-bot1">Find Your Payment History</h3>
+                                <span class="d-block color-1 margin-bot1">Get You payment details!</span>
+                                
+                                <form id="form-2" action="detailsByPayHistory.php" enctype="multipart/form-data" method="post">
+                                    <fieldset class="margin-bot3">
+                                        <strong class="d-in-block color-1 margin-bot2">Enter Your House Number:</strong>
+                                        <label class="d-block margin-bot2">
+                                            <span class="input-1"><input type="text" name="house_no"></span>
+                                        </label>
+                                        <label class="d-block margin-bot2">
+                <input type="radio" value="ALL" name="record" checked="checked">CASH &nbsp;&nbsp; <input type="radio" value="ONLINE" name="record"> ONLINE
+                                        </label>
+                                    </fieldset>
+                                    <input type="submit" class="button-5" value="Submit" style="cursor:pointer;">
+            <!--<a href="#" class="button-5 fleft margin-left1 margin-top" onClick="document.getElementById('form-2').submit()">Go</a>-->
+                                    <div class="clear"></div>
+                                </form>
+                            </div>
+                            <div id="tab6" class="tab_content" style="display: none;">
+                                <h3 class="margin-bot1">Find Your Tax</h3>
+                                <p class="margin-bot1 color-2">Find tax by property number</p>
+                                <form id="form-3" method="post" enctype="multipart/form-data" action="detailsByPropnonew.php">
+                                    <fieldset class="margin-bot3">
+                                        <strong class="d-in-block color-1 margin-bot2">Enter your property number:</strong>
+                                        <label class="d-block margin-bot2">
+                                            <span class="input-1"><input type="text" style="font-size:12pt;" name="property_no"></span>
+                                        </label>
+                                    </fieldset>
+                                    <input type="submit" class="button-5" value="Submit" style="cursor:pointer;">
+                                    <!--<a href="#" class="button-5" onClick="document.getElementById('form-3').submit()">Submit</a>-->
+                                </form>
+                            </div>
+                            <div id="tab3" class="tab_content" style="display: none;">
+                                <h3 class="margin-bot1">Find Details By Receipt Number</h3>
+                                <!--<p class="margin-bot1 color-2">Find details by receipt number</p>-->
+                                
+                                    <fieldset class="margin-bot3">
+                                        <label class="d-block margin-bot2">
+                <input type="radio" onclick="abc('areaType',this.value);" value="computer" name="receipt">Computerized &nbsp;&nbsp; <input type="radio" onclick="abc('areaType',this.value);" value="manual" name="receipt"> Manual
+                                        </label>
+                                        <form id="form-9" method="post" action="detailsByReceiptNo.php">
+                                        <div class="desc" id="areaType">
+                        
+                        </div><label id="totalcarpetLoader"></label>
+                        <input type="submit" class="button-5" value="Submit" style="cursor:pointer;">
+                                    </form>	
+                                    </fieldset>
+                                    <!--<a href="#" class="button-5" onClick="document.getElementById('form-4').submit()">Submit</a>-->
+                                
+                            </div>
+                            <div id="tab4" class="tab_content" style="display: none;">
+                                <h3 class="margin-bot1">Find Your Tax</h3>
+                                <p class="margin-bot1 color-2">Find tax by Name</p>
+                                <form id="form-3" method="post" enctype="multipart/form-data" action="listName.php">
+                                    <fieldset class="margin-bot3">
+                                        <strong class="d-in-block color-1 margin-bot2">Enter Name:</strong>
+                                        <label class="d-block margin-bot2">
+                                            <span class="input-1"><input type="text" style="font-size:12pt;" name="owner_name"></span>
+                                        </label>
+                                    </fieldset>
+                                    <input type="submit" class="button-5" value="Submit" style="cursor:pointer;">
+                                    <!--<a href="#" class="button-5" onClick="document.getElementById('form-3').submit()">Submit</a>-->
+                                </form>
+                            </div>
+                            <div id="tab2" class="tab_content" style="display: none;">
+                               
+                                <form id="form-5" method="post" enctype="multipart/form-data" action="detailsByPropnonew.php">
+                                    <h3 class="margin-bot1">Find Your Details</h3>
+                                <p class="margin-bot1 color-2">Find details by property number</p>
+                                <fieldset class="margin-bot3">
+                                        <strong class="d-in-block color-1 margin-bot2">Enter your property number:</strong>
+                                        <label class="d-block margin-bot2">
+                                            <span class="input-1"><input type="text" name="property_no" style="font-size:12pt;"></span>
+                                        </label>
+                                    </fieldset>
+                                    <input type="submit" class="button-5" value="Submit" style="cursor:pointer;">
+                                    <!--<a href="#" class="button-5" onClick="document.getElementById('form-5').submit()">Submit</a>-->
+                                </form>
+                                
+                            </div>
+                            <div id="tab1" class="tab_content" style="display: none;">
+                            <script>
+                                function getalert()
+                                {
+                                    
+                                    var p_no=document.getElementById('property_no').value;
+                                    if(p_no=='')
+                                    {
+                                        alert("Please enter property id");
+                                        return false;
+                                    }
+                                
+                                    var phoneno=document.getElementById('phoneno').value;
+                                    if(phoneno=='')
+                                    {
+                                        alert("Please enter valid contact no.");
+                                        return false;
+                                    }
+                                    
+                                    document.getElementById('form-6').submit();
+                                }
+                            </script>
+                                <h3 class="margin-bot1">Get Tax Alert</h3>  
+                                <form id="form-6" method="post" action="detailsGetAlert.php" enctype="multipart/form-data">
+                                    <fieldset class="margin-bot3">
+                                        <strong class="d-in-block color-1 margin-bot2">Enter property number:</strong>
+                                        <label class="d-block margin-bot2">
+                                            <span class="input-1"><input type="text" name="property_no" id="property_no" style="font-size:12pt;"></span>
+                                        </label>
+                                        <div class="wrap">
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Mail-ID:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="email" name="email" id="email"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Phone Number:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="text" name="phoneno" id="phoneno"></span>
+                                                </label>
+                                            </div>
+                                            <div class="col-1">
+                                                <strong class="d-block color-1 margin-bot2">Address:</strong>
+                                                <label class="d-block">
+                                                    <span class="input-2 rel"><input type="text" name="address" id="address"></span>
+                                                </label>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </fieldset>
+                                    <a href="#" class="button-5" onclick="return getalert();">Submit</a>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+    <hr>
+</body>
+</html>
